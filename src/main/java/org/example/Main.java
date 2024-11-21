@@ -15,12 +15,10 @@ public class Main {
         HiddenNumber n = new HiddenNumber(numberHidden);
         ExecutorService pool = Executors.newFixedThreadPool(TOTAL_THREADS);
 
-        // Lanzar exactamente TOTAL_THREADS tareas.
         for (int i = 0; i < TOTAL_THREADS; i++) {
             pool.execute(new RunnableGuess(n));
         }
 
-        // Cerramos el pool de hilos cuando se termine.
         pool.shutdown();
     }
 }
