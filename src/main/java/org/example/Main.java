@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Random rm = new Random();
-        int numberHidden = rm.nextInt(0, 101); // Número entre 0 y 100.
+        int numberHidden = rm.nextInt(0, 101); 
         System.out.println("Número a adivinar: " + numberHidden);
 
         HiddenNumber n = new HiddenNumber(numberHidden);
