@@ -1,34 +1,28 @@
 package org.example;
 
-import java.util.Random;
-
 public class HiddenNumber {
-    int number;
-    int guessed;
+    private final int number; // Número oculto.
+    private boolean guessed;  // Indica si el número ya fue adivinado.
 
-    public HiddenNumber(int n){
-        this.number=n;
-        guessed=25;
+    public HiddenNumber(int n) {
+        this.number = n;
+        this.guessed = false;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public int getGuessed() {
-        return guessed;
-    }
-
-    synchronized public int numberGuess(int num){
-        if (guessed==rue){
-            return -1;
-        } else{
-            if (number==num){
-                guessed=true;
-                return 1;
-            } else {
-                return 0;
-            }
+    // Método sincronizado para intentar adivinar el número.
+    public synchronized int numberGuess(int num) {
+        if (guessed) {
+            return -1; // Ya fue adivinado.
+        } else if (number == num) {
+            guessed = true; // Adivinado correctamente.
+            return 1;
+        } else {
+            return 0; // Intento fallido.
         }
+    }
+
+    // Obtener el estado de "adivinado".
+    public synchronized boolean getGuessed() {
+        return guessed;
     }
 }
