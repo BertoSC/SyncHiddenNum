@@ -16,7 +16,6 @@ public class RunnableGuess implements Runnable {
         while (!hidden.getGuessed()) {
             int guess = rm.nextInt(0, 101); // Genera un número aleatorio entre 0 y 100.
             int result = hidden.numberGuess(guess);
-
             switch (result) {
                 case 1:
                     // Este hilo acertó el número.
@@ -29,8 +28,12 @@ public class RunnableGuess implements Runnable {
                 case -1:
                     // Este hilo ya sabe que otro acertó.
                     System.out.println(Thread.currentThread().getName() + " no lo ha acertado, pero otro sí.");
-                    return; // Salir del bucle, ya no hay trabajo que hacer.
+                    break; // Salir del bucle, ya no hay trabajo que hacer.
             }
+
+
         }
+        return;
+
     }
 }
