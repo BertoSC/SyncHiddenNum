@@ -3,11 +3,16 @@ package org.example;
 import java.util.Random;
 
 public class RunnableGuess implements Runnable {
-    private final HiddenNumber hidden;
+    private final AtomicHiddenNumber hidden;
+    //private final HiddenNumber hidden;
 
-    public RunnableGuess(HiddenNumber hn) {
+    public RunnableGuess(AtomicHiddenNumber hn) {
         this.hidden = hn;
     }
+
+    /*public RunnableGuess(HiddenNumber hn) {
+        this.hidden = hn;
+    }*/
 
     @Override
     public void run() {

@@ -9,14 +9,16 @@ public class Main {
 
     public static void main(String[] args) {
         Random rm = new Random();
-        int numberHidden = rm.nextInt(0, 101); 
+        int numberHidden = rm.nextInt(0, 101);
         System.out.println("Número a adivinar: " + numberHidden);
 
         HiddenNumber n = new HiddenNumber(numberHidden);
+        AtomicHiddenNumber num = new AtomicHiddenNumber(numberHidden);
         ExecutorService pool = Executors.newFixedThreadPool(TOTAL_THREADS);
 
         for (int i = 0; i < TOTAL_THREADS; i++) {
-            pool.execute(new RunnableGuess(n));
+            pool.execute(new RunnableGuess(num));
+            //pool.execute(new RunnableGuess(n));
         }
 
         pool.shutdown();
